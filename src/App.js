@@ -1,21 +1,37 @@
+import { useReducer } from 'react'
 import './App.css';
-import todos from './data/todos.js'
+import ACTIONS from './actions/todoActions.js'
+import reducer from './reducers/todoReducers.js'
+import TodoList from './components/TodoList.js'
+import TodoForm from './components/TodoForm.js'
+
 
 const complete = (evt) => {
   evt.target.classList.add('completed')
-  
+  console.log(evt.target)
 }
 
 function App() {
+//  const [state, dispatch] = useReducer(reducer, { tasks: null })
+
+//  function addTodo() {
+//    dispatch({ type: ACTIONS.ADD_TODO})
+//  }
+
+//  function completeTodo() {
+//    dispatch({ type: ACTIONS.COMPLETE_TODO})
+//  }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Todo</h1>
 
-        {todos.map(todo => {
-          return <div className='tasks' onClick={complete} key={todo.id}>{todo.task}</div>
-        })}
+        <TodoForm />
 
+        <TodoList />
+
+        <button>Clear Completed</button>
 
       </header>
     </div>
